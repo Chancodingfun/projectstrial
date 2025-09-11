@@ -1,1 +1,1 @@
-These my my basic learning projects
+These are my basic learning projects
