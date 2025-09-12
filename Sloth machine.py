@@ -116,7 +116,16 @@ def get_bet():
 
 
 def spin(balance):
-    lines = get_number_of_line()
+    while True:
+        lines = get_number_of_line()
+        # Check if they can afford at least MIN_BET on chosen lines
+        if balance < lines * MIN_BET:
+            print(
+                f"You don’t have enough balance (${balance}) "
+                f"to bet on {lines} lines (minimum needed: ${lines * MIN_BET})."
+            )
+        else:
+            break  # valid choice of lines
     while True:
         bet = get_bet()
         total_bet = bet * lines
@@ -134,7 +143,7 @@ def spin(balance):
     print_slot_machine(slots)
     winnings, winning_lines = check_winning(slots, lines, bet, symbol_value)
     print(f"You won ${winnings}.")
-    print(f"You won on lines", *winning_lines)
+    print(f"You won on lines", * winning_lines)
 
     return winnings - total_bet
 
