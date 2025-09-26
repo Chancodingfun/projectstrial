@@ -8,12 +8,6 @@ WIDTH, HEIGHT = 800, 500
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Hangman:Find answer before getting hanged!")
 
-# load images
-
-images = []
-for i in range(7):
-    image = pygame.image.load("hangman"+str(i)+".png")
-    images.append(image)
 
 # button variables
 RADIUS = 20
@@ -21,10 +15,18 @@ GAP = 15
 letters = []
 startx = round(WIDTH-((RADIUS*2+GAP)*13)/2)
 starty = 400
+A = 65
 for i in range(26):
     x = startx + GAP*2 + ((RADIUS * 2+GAP)*(i % 13))
     y = starty+((i//13)*(GAP + RADIUS*2))
-    letters.append([x, y])
+    letters.append([x, y,chr(A+i)])
+
+# load images
+
+images = []
+for i in range(7):
+    image = pygame.image.load("hangman"+str(i)+".png")
+    images.append(image)
 
 # game variables
 
@@ -64,5 +66,3 @@ while run:
 
 
 pygame.quit()
-
-
